@@ -1,0 +1,125 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>侧边创意导航</title>
+<style>
+body,ul,li,h3{
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+#content{
+	width:1024px;
+	height:660px;
+	background:url(img/bg.jpg);
+	margin:50px auto;
+	padding-top:20px;
+}
+#content li{
+	width:246px;
+	height:38px;
+	margin-top:20px;
+	background:url(img/0.png) -109px -1px;
+	position:relative;
+	border-left:5px solid #23c6c3;
+	margin-left:-5px;
+}
+#content li h3{
+	color:#fff;
+	font-family:'微软雅黑';
+	font-weight:normal;
+	text-indent:20px;
+	line-height:40px;
+}
+#content li a{
+	color:#000;
+	font-family:'微软雅黑';
+	font-size:12px;
+	line-height:40px;
+	position:absolute;
+	top:6px;
+	left:130px;
+}
+
+
+.sports-tab li .bg{
+	position:absolute;
+	z-index:-2;
+	top:0;left:0;
+	width:135px;height:40px;
+	background:url(images/sports.png) right -232px no-repeat;
+	overflow:hidden}
+.sports-tab li .bgOn{
+	position:absolute;
+	z-index:-1;
+	top:0;left:0;width:0;
+	height:40px;
+	background:url(images/sports.png) right -273px no-repeat;
+	overflow:hidden}
+.sports-tab li.on,.sports-tab li.on .bgOn{width:195px}
+.sports-tab li .bar{
+	float:left;
+	width:5px;height:40px;
+	background:#23c6c3}
+.sports-tab li h4{
+	display:inline;
+	float:left;
+	max-width:92px;_width:expression(this.clientWidth > 92 ? "92px" : this.clientWidth+"px");
+	margin-left:17px;
+	color:#ddd;
+	font:700 18px/40px 'microsoft yahei';
+	_line-height:42px;
+	overflow:hidden}
+.sports-tab li.on h4{color:#fff}
+</style>
+
+</head>
+<body>
+<div id="content">
+	<!--<ul>
+		<li>
+			<h3>曼联专区</h3>
+		</li>
+		<li>
+			<h3>巴萨专区</h3>
+		</li>
+		<li>
+			<h3>米兰专区</h3>
+		</li>
+		<li>
+			<h3>拜仁专区</h3>
+		</li>
+	</ul>-->
+	<ul class="sports-tab" id="J_hot_competition">
+		<li name="sports_sports_27138_word01" class="on" rel="#J_hot_competition01">
+			<div class="bg"></div>
+			<div class="bgOn"></div>
+			<span class="bar"></span>
+			<h4>运动上新</h4>
+		</li>
+		<li name="sports_sports_27138_word02" rel="#J_hot_competition02">
+			<div class="bg"></div>
+			<div class="bgOn"></div>
+			<span class="bar"></span>
+			<h4>户外达人</h4>
+		</li>
+	</ul>
+
+</div>
+</body>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script>
+/*$(function(){
+	$('#content li').hover(function(){
+		var $this = $(this);
+		$this.text();		
+		$this.css({"background-position":"-2px -41px"});
+	},function(){
+		var $this = $(this);
+		$this.css({"background-position":"-109px -1px"});
+	});
+});*/
+</script>
+</html>
+
