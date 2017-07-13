@@ -1,0 +1,199 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>360单页</title>
+<style>
+*{
+	margin:0;
+	padding:0;
+}
+li{
+	list-style:none;
+}
+a{
+	text-decoration:none;
+}
+html,body{
+	height:100%;
+	overflow:hidden;
+}
+#bg{
+	width:100%;
+	height:100%;
+}
+#bg div{
+	width:100%;
+	height:100%;
+	background-position:center;
+	background-attachment:fixed;
+}
+
+#header{
+	width:100%;
+	height:47px;
+	position:fixed;
+	top:25px;
+}
+#header .logo{
+	width:226px;
+	height:47px;
+	float:left;
+	margin-left:60px;
+}
+#header .nav{
+	width:400px;
+	height:47px;
+	float:right;
+	margin-right:60px;
+	position:relative;
+}
+#header .nav ul li{
+	float:left;
+	line-height:47px;
+	margin-left:53px;
+	
+}
+#header .nav ul li a{
+	color:rgba(255,255,255,0.7);
+	font-size:14px;
+	font-family:'微软雅黑';
+	text-shadow:1px 1px 10px #000;
+}
+#header .nav ul li.on a{ 			 /*li和.on之间不能有空格*/
+	color:#fff;
+}
+#header .nav .circle{
+	width:58px;
+	height:28px;
+	border:1px solid rgba(255,255,255,0.7);
+	border-radius:15px;
+	position:absolute;
+	top:9px;
+	left:37px;
+	z-index:-1;
+}
+
+#slide{
+	width:110px;
+	height:330px;
+	position:fixed;
+	left:60px;
+	top:50%;
+	margin-top:-165px;
+	background:url(img/nav.png) no-repeat;
+	padding-top:6px;
+}
+#slide ul li{
+	color:rgba(255,255,255,0.8);
+	font-size:12px;
+	font-family:'微软雅黑';
+	padding-left:50px;
+	line-height:21px;
+	margin-bottom:56px;
+	cursor:pointer;
+}
+#slide ul li.on{
+	background:url(img/nav_cho.png) no-repeat;
+	color:#fff;
+	font-size:14px;
+}
+</style>
+<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="js/jquery.mousewheel.js"></script>
+<script>
+$(function(){
+	$(document).scrollTop(0);
+	
+	$("#header div.nav ul li").mouseover(function(){
+		var Left = $(this).position().left;
+		var Width = $(this).width();		
+		$(this).addClass('on').siblings().removeClass('on');		
+		$(".circle").stop(true).animate({
+			"left":Left + 37 + "px",
+			"width":Width + 30 + "px"
+		},500);
+	});
+	
+	$("#header div.nav").mouseleave(function(){	
+		$(".circle").stop(true).animate({
+			"left":"37px",
+			"width":"58px"
+		},500,function(){
+			$("#header div.nav ul li").eq(0).addClass('on').siblings().removeClass('on');
+		});
+	});
+	
+	var index = 0;
+	var time = new Date();
+	
+	$("#slide ul li").click(function(){
+		index = $(this).index();
+		bgWheel();
+	});
+	
+	$(document).mousewheel(function(){
+		if( new Date()-time > 1000 ){	//间隔一秒
+			time = new Date();
+			var dt = arguments[1];		//??
+			if( dt < 0 ){
+				index ++;
+				index%=4;
+			}else{
+				index --;
+				if(index<0)index=3;
+			}
+			bgWheel();
+		};	
+	});
+	
+	$(window).resize(function(){
+		var wH = $(window).height();
+		$("body,html").scrollTop( index * wH );
+	});
+	
+	function bgWheel(){
+		$("#slide ul li").eq(index).addClass('on').siblings().removeClass('on');
+		var wH = $(window).height();
+		$("body,html").animate({
+			"scrollTop" : index * wH + "px"
+		},1000);
+	}
+});
+</script>
+</head>
+<body>
+<!-- 背景区 -->
+<div id="bg">
+	<div style="background-image:url(img/1.jpg);"></div>
+	<div style="background-image:url(img/2.jpg);"></div>
+	<div style="background-image:url(img/3.jpg);"></div>
+	<div style="background-image:url(img/4.jpg);"></div>
+</div>
+
+<!-- 顶部区 -->
+<div id="header">
+	<div class="logo"><img src="img/logo.png" /></div>
+	<div class="nav">
+		<ul>
+			<li><a href="#" class="on">首页</a></li>
+			<li><a href="#">常见问题</a></li>
+			<li><a href="#">论坛</a></li>
+			<li><a href="#">360首页>></a></li>
+		</ul>
+		<div class="circle"></div>
+	</div>
+</div>
+
+<!-- 侧边栏 -->
+<div id="slide">
+	<ul>
+		<li class="on">安全换机</li>
+		<li>无网对传</li>
+		<li>隐私粉碎</li>
+		<li>一键转移</li>
+	</ul>
+</div>
+</body>
+</html>
+
