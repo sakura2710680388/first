@@ -1,0 +1,167 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>产品介绍页面</title>
+<style>
+body,div,ul,li,p{
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+body{
+	background:#333;
+}
+.banner{
+	width:940px;
+	height:600px;
+	margin:50px auto;
+	
+}
+.banner ul li{
+	width:235px;
+	height:600px;
+	float:left;
+}
+
+.info_black{
+	width:200px;
+	height:140px;
+	background:rgba(0,0,0,0.5);
+	margin:420px auto 0;
+	color:#fff;
+	font-family:'微软雅黑';
+	position:relative;
+}
+.info_black h3{
+	font-size:20px;
+	font-weight:normal;
+	text-align:center;
+	line-height:60px;
+	border-bottom:1px solid #fff;
+}
+.info_black>p{
+	font-size:12px;
+	text-align:center;
+	margin-top:8px;
+}
+
+.info_white{
+	width:200px;
+	height:140px;
+	background:#e7e7e7;
+	color:#000;
+	position:absolute;
+	top:20px;
+	left:0;
+	text-indent:15px;
+	box-shadow:0 0 10px #fff;
+	opacity:0;
+}
+.info_white p{
+	font-size:12px;
+}
+.info_white p:nth-child(1){
+	font-size:14px;
+	text-align:center;
+	line-height:36px;
+	border-bottom:1px solid #d4d4d4;
+}
+.info_white p:nth-child(2){
+	padding:8px 0;
+	border-bottom:1px solid #f1f1f1;
+}
+.info_white p:nth-child(3){
+	padding-bottom:25px;
+	border-bottom:1px solid #d4d4d4;
+}
+.info_white p:nth-child(4){
+	color:#4b8fd0;
+	border-bottom:1px solid #f1f1f1;
+}
+</style>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script>
+$(function(){
+	$('.banner ul li').hover(function(){
+		var $this = $(this);
+		$this.stop(true).animate({opacity:1},500);
+		$this.find('.info_white').stop(true).animate({
+			top:0,
+			opacity:1
+		},500);
+	},function(){
+		var $this = $(this);
+		$this.stop(true).animate({opacity:0.5},500);
+		$this.find('.info_white').stop(true).animate({
+			top:"20px",
+			opacity:0
+		},500);
+	});
+});
+</script>
+</head>
+<body>
+<div class="banner">
+	<ul>
+		<li style="background-image:url(img/1.jpg);">
+			<div class="info_black">
+				<h3>《新木乃伊》</h3>
+				<p>2017-06-09</p>
+				<p>黑暗宇宙 沙漠里的那一夜</p>
+				
+				<div class="info_white">
+					<p>新木乃伊复仇归来</p>
+					<p>导演:艾里克斯·库兹曼</p>
+					<p>主演:汤姆·克鲁斯 索菲亚·宝特拉</p>
+					<p>161,135人想看</p>
+				</div>
+			</div>
+		</li>
+		<li style="background-image:url(img/2.jpg);">
+			<div class="info_black">
+				<h3>《新木乃伊》</h3>
+				<p>2017-06-09</p>
+				<p>黑暗宇宙 沙漠里的那一夜</p>
+				
+				<div class="info_white">
+					<p>新木乃伊复仇归来</p>
+					<p>导演:艾里克斯·库兹曼</p>
+					<p>主演:汤姆·克鲁斯 索菲亚·宝特拉</p>
+					<p>161,135人想看</p>
+				</div>
+			</div>
+		</li>
+		<li style="background-image:url(img/3.jpg);">
+			<div class="info_black">
+				<h3>《新木乃伊》</h3>
+				<p>2017-06-09</p>
+				<p>黑暗宇宙 沙漠里的那一夜</p>
+				
+				<div class="info_white">
+					<p>新木乃伊复仇归来</p>
+					<p>导演:艾里克斯·库兹曼</p>
+					<p>主演:汤姆·克鲁斯 索菲亚·宝特拉</p>
+					<p>161,135人想看</p>
+				</div>
+			</div>
+		</li>
+		<li style="background-image:url(img/4.jpg);">
+			<div class="info_black">
+				<h3>《新木乃伊》</h3>
+				<p>2017-06-09</p>
+				<p>黑暗宇宙 沙漠里的那一夜</p>
+				
+				<div class="info_white">
+					<p>新木乃伊复仇归来</p>
+					<p>导演:艾里克斯·库兹曼</p>
+					<p>主演:汤姆·克鲁斯 索菲亚·宝特拉</p>
+					<p>161,135人想看</p>
+				</div>
+			</div>
+		</li>
+	</ul>
+</div>
+</body>
+</html>
+
