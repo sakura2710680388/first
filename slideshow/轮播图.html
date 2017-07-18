@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style>
+.rslides {
+  position: relative;
+  list-style: none;
+  overflow: hidden;
+  width: 900px;
+  padding: 0;
+  margin: 0px auto;
+  }
+ 
+.rslides li {
+  -webkit-backface-visibility: hidden;
+  position: absolute;
+  display: none;
+  width: 100%;
+  left: 0;
+  top: 0;
+  }
+ 
+.rslides li:first-child {
+  position: relative;
+  display: block;
+  float: left;
+  }
+ 
+.rslides img {
+  display: block;
+  height: auto;
+  float: left;
+  width: 100%;
+  border: 0;
+  }
+</style>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/responsiveslides.min.js"></script>
+<script>
+$(function() {
+    $(".rslides").responsiveSlides();
+  });
+  
+$(".rslides").responsiveSlides({
+  auto: true,             // Boolean: 设置是否自动播放, true or false
+  speed: 500,            // Integer: 动画持续时间，单位毫秒
+  timeout: 4000,          // Integer: 图片之间切换的时间，单位毫秒
+  pager: false,           // Boolean: 是否显示页码, true or false
+  nav: false,             // Boolean: 是否显示左右导航箭头（即上翻下翻）, true or false
+  random: false,          // Boolean: 随机幻灯片顺序, true or false
+  pause: false,           // Boolean: 鼠标悬停到幻灯上则暂停, true or false
+  pauseControls: true,    // Boolean: 悬停在控制板上则暂停, true or false
+  prevText: "Previous",   // String: 往前翻按钮的显示文本
+  nextText: "Next",       // String: 往后翻按钮的显示文本
+  maxwidth: "",           // Integer: 幻灯的最大宽度
+  navContainer: "",       // Selector: Where controls should be appended to, default is after the 'ul'
+  manualControls: "",     // Selector: 声明自定义分页导航
+  namespace: "rslides",   // String: 修改默认的容器名称
+  before: function(){},   // Function: 回调之前的参数
+  after: function(){}     // Function: 回调之后的参数
+});
+  </script>
+</head>
+<body>
+<ul class="rslides">
+  <li><img src="img/1.jpg" alt=""></li>
+  <li><img src="img/2.jpg" alt=""></li>
+  <li><img src="img/3.jpg" alt=""></li>
+</ul>
+</body>
+</html>
+
