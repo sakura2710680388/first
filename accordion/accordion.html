@@ -1,0 +1,198 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>手风琴</title>
+<style>
+*{margin:0px;padding:0px;font-family:"微软雅黑"；}
+ul{list-style:none;}
+
+/*主要的div*/
+#main{
+	width:1185px;
+	height:450px;
+	margin:50px auto;
+}
+
+/*li样式*/
+#main ul li{
+	width:106px;
+	height:450px;
+	border-left:1px solid black;
+	float:left;
+	overflow:hidden;
+	position:relative;
+}
+
+/*展开第一个li:nth-child()匹配指定个数的li，个数1开始*/
+#main ul li:nth-child(1){
+	width:538px;
+	border-left:none;
+}
+
+/*菜单*/
+.tool{
+	width:538px;
+	height:45px;
+	position:absolute;
+	left:0;
+	bottom:0;
+	background:#212121;
+}
+
+/*字体*/
+#main p{
+	float:left;
+	color:white;
+	line-height:45px;
+}
+.title{
+	font-size:16px;
+	padding:0 10px;
+}
+.nav{
+	font-size:14px;
+	padding-top:3px;
+}
+.nav a{
+	margin-left:30px;
+	padding:13px;
+	padding-top:1px;
+	background:url("images/side_sl_zj.png") 0 -410px no-repeat;
+}
+
+/*描述 background:rgba(0,0,0,0.5) red green blue 0-255 alpha透明度 1-0 */
+.desc{
+	width:538px;
+	height:50px;
+	color:white;
+	position:absolute;
+	left:0;
+	bottom:45px;
+	background:rgba(0,0,0,0.5);
+	line-height:50px;
+	font-size:20px;
+	padding-left:20px;
+}
+
+/*遮罩*/
+.pan{
+	width:538px;
+	height:450px;
+	background:rgba(0,0,0,0.3);
+	position:absolute;
+	left:0;
+	top:0;
+}
+</style>
+<script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+<script>
+$(function(){//页面加载完成后，执行的代码
+	//页面初始化 :first查找第一个元素
+	change($("ul li:first"));
+	$("ul li").hover(function(){
+		change($(this));
+		i = $(this).index()+1;//下次显示下一个li
+		clearInterval(timer);//清除定时器
+	},function(){
+		timer = setInterval("move()",2000);//重新启动定时器                                                                    
+	});
+});	//hover鼠标移入移出 
+	//$(this)当前鼠标移动的li
+	//animate(移动的目标样式,speed) 自定义动画
+	//siblings():兄弟，查找当前元素的兄弟
+	//find()在子元素中查找
+	//fadeOut fadeIn 淡入淡出
+
+//轮换 eq():根据指定下标位置获取元素，等于
+var timer = setInterval("move()",3000);//每隔多长时间执行一次
+var i = 1; //需要选择的li下标，下标是从0开始
+function move(){
+	var $lis = $("ul li");//获取所有的li
+	if(i == 7){
+		i=0;
+	}
+	change($lis.eq(i));
+	i++; //i = i+1;
+}
+
+//移动方法
+function change($li){
+	//移动
+	$li.stop().animate({"width":"538px"},500).siblings().stop().animate({"width":"106px"},500);
+	//去除遮罩
+	$li.find(".pan").fadeOut(100).end().siblings().find(".pan").fadeIn(100);
+	//描述
+	$li.find(".desc").show(100).end().siblings().find(".desc").hide(100);
+	//菜单
+	$li.find(".nav").show(100).end().siblings().find(".nav").hide(100);
+}
+</script>
+</head>
+<body>
+<div id="main">
+	<ul>
+		<li>
+			<img src="images/1.jpg" />
+			<div class="tool">
+				<p class="title">服饰</p>
+				<p class="nav"><a>封面明星</a><a>本月潮货</a><a>我爱淘宝</a></p>
+			</div>
+			<div class="desc">201春夏潮流趋势全面GET!</div>
+			<div class="pan"></div>
+		</li>
+		
+		<li>
+			<img src="images/2.jpg" />
+			<div class="tool">
+				<p class="title">奢华</p>
+				<p class="nav"><a>封面明星</a><a>本月潮货</a><a>我爱淘宝</a></p>
+			</div>
+			<div class="desc">201春夏潮流趋势全面GET!</div>
+			<div class="pan"></div>
+		</li>
+		
+		<li>
+			<img src="images/3.jpg" />
+			<div class="tool">
+				<p class="title">美容</p>
+				<p class="nav"><a>封面明星</a><a>本月潮货</a><a>我爱淘宝</a></p>
+			</div>
+			<div class="desc">201春夏潮流趋势全面GET!</div>
+			<div class="pan"></div>
+		</li>
+		
+		<li>
+			<img src="images/4.jpg" />
+			<div class="tool">
+				<p class="title">靓发</p>
+				<p class="nav"><a>封面明星</a><a>本月潮货</a><a>我爱淘宝</a></p>
+			</div>
+			<div class="desc">201春夏潮流趋势全面GET!</div>
+			<div class="pan"></div>
+		</li>
+		
+		<li>
+			<img src="images/5.jpg" />
+			<div class="tool">
+				<p class="title">享乐</p>
+				<p class="nav"><a>封面明星</a><a>本月潮货</a><a>我爱淘宝</a></p>
+			</div>
+			<div class="desc">201春夏潮流趋势全面GET!</div>
+			<div class="pan"></div>
+		</li>
+		
+		<li>
+			<img src="images/6.jpg" />
+			<div class="tool">
+				<p class="title">化妆品</p>
+				<p class="nav"><a>封面明星</a><a>本月潮货</a><a>我爱淘宝</a></p>
+			</div>
+			<div class="desc">201春夏潮流趋势全面GET!</div>
+			<div class="pan"></div>
+		</li>
+	</ul>
+</div>
+</body>
+</html>
+
